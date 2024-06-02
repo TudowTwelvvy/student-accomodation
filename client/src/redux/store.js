@@ -1,10 +1,9 @@
-import { combineReducers, configureStore } from '@reduxjs/toolkit'
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import userReducer from './user/userSlice';
-import { persistReducer, } from 'redux-persist';
+import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import persistStore from 'redux-persist/es/persistStore';
 
-const rootReducer =  combineReducers({user:userReducer});
+const rootReducer = combineReducers({ user: userReducer });
 
 const persistConfig = {
   key: 'root',
@@ -16,14 +15,13 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
   reducer: persistedReducer,
-  
 
-  // this will prevent error in the browser
+
+  //helps with the browser error
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: false,
     }),
-
 });
 
-export const persistor = persistStore(store)
+export const persistor = persistStore(store);

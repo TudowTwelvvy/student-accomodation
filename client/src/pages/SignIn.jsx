@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import { signInStart, signInSuccess, signInFailure } from '../redux/user/userSlice';
+import OAuth from '../components/OAuth';
 
 function SignIn() {
   const [formData, setFormData] = useState({
@@ -32,7 +33,7 @@ function SignIn() {
       {
         method: 'POST',
         headers:{
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify(formData),
       }
@@ -40,13 +41,13 @@ function SignIn() {
       const data = await res.json();
       if (data.success === false){
         
-        dispatch(signInFailure(data.message))
+        dispatch(signInFailure(data.message));
         
         return
-      }else{
-        dispatch(signInSuccess(data))
-        navigate('/')
-      } 
+      }
+      dispatch(signInSuccess(data))
+      navigate('/')
+    
     } catch (error) {
       dispatch(signInFailure(error.message))
     }
@@ -66,6 +67,7 @@ function SignIn() {
         <button disabled = {loading} className='bg-dark-blue text-white p-3 rounded-lg uppercase hover:opacity-90 disabled:opacity-80' onSubmit={handleSubmit}>
           {loading? "Loading..." : "Sign In"}
         </button>
+        <OAuth/>
       </form>
 
       <div className='flex gap-2 mt-5'>
