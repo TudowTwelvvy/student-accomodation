@@ -25,7 +25,7 @@ function Profile() {
   const [percent, setPercent] = useState(0);
   const [fileUploadError, setFileUploadError] = useState(false);
   const [formData, setFormData] = useState({});
-  console.log(formData)
+
   const [updateSuccess, setUpdateSuccess] = useState(false);
   const [showListingsError, setShowListingsError] = useState(false);
   const [userListings, setUserListings] = useState([]);
@@ -90,6 +90,22 @@ function Profile() {
     }
   };
 
+  const handleDeleteUser = async () => {
+    try {
+      dispatch(deleteUserStart());
+      const res = await fetch(`/api/user/delete/${currentUser._id}`, {
+        method: 'DELETE',
+      });
+      const data = await res.json();
+      if (data.success === false) {
+        dispatch(deleteUserFailure(data.message));
+        return;
+      }
+      dispatch(deleteUserSuccess(data));
+    } catch (error) {
+      dispatch(deleteUserFailure(error.message));
+    }
+  };
 
   return (
     <div className='p-3 max-w-lg mx-auto'>
@@ -100,7 +116,7 @@ function Profile() {
 
         <p className='text-sm self-center'>
           {fileUploadError ? (
-            <span className='text-red-700'>
+            <span className='text-red-500'>
               Error Image upload (image must be less than 2 mb)
             </span>
           ) : percent > 0 && percent < 100 ? (
@@ -120,11 +136,11 @@ function Profile() {
         </button>
       </form>
       <div className='flex justify-between mt-5'>
-        <span className='text-red-500 cursor-pointer'>Delete Account</span>
+        <span className='text-red-500 cursor-pointer' onClick={handleDeleteUser}>Delete Account</span>
         <span className='text-red-500 cursor-pointer'>Sign out</span>
       </div>
       <p className='text-red-500 mt-5'>{error ? error : ""}</p>
-      <p className='text-green-500 mt-5'>{updateSuccess? "User is updated successfully": ""}</p>
+      <p className='text-green-500 mt-5'>{updateSuccess? "User is updated successfully!": ""}</p>
       
       
      
