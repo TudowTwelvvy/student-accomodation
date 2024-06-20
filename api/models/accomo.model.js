@@ -14,6 +14,12 @@ const accomoSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    male:{
+      type: Boolean,
+    },
+    female:{
+      type: Boolean,
+    },
     singlesPrice: {
       type: Number,
       required: true,
