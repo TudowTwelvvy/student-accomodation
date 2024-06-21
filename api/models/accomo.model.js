@@ -22,47 +22,51 @@ const accomoSchema = new mongoose.Schema(
     },
     singlesPrice: {
       type: Number,
-      required: true,
     },
     sharingPrice: {
       type: Number,
-      required: true,
+      
     },
     singles: {
       type: Boolean,
-      required: true,
+     
     },
     sharings: {
       type: Boolean,
-      required: true,
+    
     },
     singleRoomsNo: {
       type: Number,
-      required: true,
     },
     sharingRoomsNo: {
       type: Number,
-      required: true,
+      
+    },
+    spaceLeftMales:{
+      type: Number,
+    },
+    spaceLeftFemales:{
+      type: Number,
     },
     furnished: {
       type: Boolean,
-      required: true,
+      
     },
     swimmingpool: {
       type: Boolean,
-      required: true,
+      
     },
     nsfas: {
       type: Boolean,
-      required: true,
+
     },
     otherBursary: {
       type: Boolean,
-      required: true,
+     
     },
     cashPaying: {
       type: Boolean,
-      required: true,
+      
     },
     imageUrls: {
       type: Array,
