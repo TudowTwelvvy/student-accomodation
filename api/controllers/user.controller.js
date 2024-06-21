@@ -1,6 +1,7 @@
 import bcryptjs from 'bcryptjs';
 import User from '../models/user.model.js';
 import { errorHandler } from '../utilis/error.js';
+import Accomodation from '../models/accomo.model.js';
 
 
 export const test =(req,res)=>{
@@ -47,5 +48,18 @@ export const deleteUser = async (req, res, next) => {
     res.status(200).json('User has been deleted!');
   } catch (error) {
     next(error);
+  }
+};
+
+export const getUserAccomodations = async (req, res, next) => {
+  if (req.user.id === req.params.id) {
+    try {
+      const accomodations = await Accomodation.find({ userRef: req.params.id });
+      res.status(200).json(accomodations);
+    } catch (error) {
+      next(error);
+    }
+  } else {
+    return next(errorHandler(401, 'You can only view your own listings!'));
   }
 };
