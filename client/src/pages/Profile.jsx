@@ -28,8 +28,8 @@ function Profile() {
   const [formData, setFormData] = useState({});
 
   const [updateSuccess, setUpdateSuccess] = useState(false);
-  const [showListingsError, setShowListingsError] = useState(false);
-  const [userListings, setUserListings] = useState([]);
+  const [showAccomError, setShowAccomError] = useState(false);
+  const [userAccomodations, setUserAccomodations] = useState([]);
   const dispatch = useDispatch();
 
   const handleFileUpload=(file)=>{
@@ -123,9 +123,44 @@ function Profile() {
     }
   };
 
+  const handleShowAccomodations = async () => {
+    try {
+      setShowAccomError(false);
+      const res = await fetch(`/api/user/accomodations/${currentUser._id}`);
+      const data = await res.json();
+      if (data.success === false) {
+        setShowAccomError(true);
+        return;
+      }
+
+      setUserAccomodations(data);
+    } catch (error) {
+      setShowAccomError(true);
+    }
+  };
+
+  const handleAccomDelete = async (accomodationId) => {
+    try {
+      const res = await fetch(`/api/accomodation/delete/${accomodationId}`, {
+        method: 'DELETE',
+      });
+      const data = await res.json();
+      if (data.success === false) {
+        console.log(data.message);
+        return;
+      }
+
+      setUserAccomodations((prev) =>
+        prev.filter((accomodation) => accomodation._id !== accomodationId)
+      );
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
 
   return (
-    <div className='p-3 max-w-lg mx-auto'>
+    <div className='p-3 max-w-lg mx-auto flex flex-col'>
       <h1 className="text-3xl font-semibold text-center my-7">Profile</h1>
       <form className='flex flex-col gap-4' onSubmit={handleSubmit}>
         <input onChange={(e)=>setFile(e.target.files[0])} type="file" name="" ref={fileRef} hidden accept='image/*'/>
@@ -162,7 +197,51 @@ function Profile() {
       <p className='text-red-500 mt-5'>{error ? error : ""}</p>
       <p className='text-green-500 mt-5'>{updateSuccess? "User is updated successfully!": ""}</p>
       
-      
+      <button onClick={handleShowAccomodations} className='text-green-500 mt-2'>Show Accomodations</button>
+
+      <p className='text-red-700 mt-5'>
+        {showAccomError ? 'Error showing accomodations' : ''}
+      </p>
+
+      {userAccomodations && userAccomodations.length > 0 && (
+        <div className='flex flex-col gap-4'>
+          <h1 className='text-center mt-7 text-2xl font-semibold'>
+            Your Accomodations
+          </h1>
+          {userAccomodations.map((accomodation) => (
+            <div
+              key={accomodation._id}
+              className='border rounded-lg p-3 flex justify-between items-center gap-4'
+            >
+              <Link to={`/accomodation/${accomodation._id}`}>
+                <img
+                  src={accomodation.imageUrls[0]}
+                  alt='accomodation cover'
+                  className='h-16 w-16 object-contain'
+                />
+              </Link>
+              <Link
+                className='text-slate-700 font-semibold  hover:underline truncate flex-1'
+                to={`/accomodation/${accomodation._id}`}
+              >
+                <p>{accomodation.name}</p>
+              </Link>
+
+              <div className='flex flex-col item-center'>
+                <button
+                  onClick={() => handleAccomDelete(accomodation._id)}
+                  className='text-red-700 uppercase'
+                >
+                  Delete
+                </button>
+                <Link to={`/update-accomodation/${accomodation._id}`}>
+                  <button className='text-green-700 uppercase'>Edit</button>
+                </Link>
+              </div>
+            </div>
+          ))}
+        </div>
+          )}
      
     </div>
   )
