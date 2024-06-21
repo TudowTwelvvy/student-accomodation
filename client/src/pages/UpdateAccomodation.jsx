@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   getDownloadURL,
   getStorage,
@@ -7,10 +7,10 @@ import {
 } from 'firebase/storage';
 import { app } from '../firebase';
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { MdDelete } from "react-icons/md";
 
-function CreateAccomodation() {
+function UpdateAccomodation() {
   const [files, setFiles] = useState([])
   console.log(files)
   const { currentUser } = useSelector((state) => state.user);
@@ -40,8 +40,23 @@ function CreateAccomodation() {
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
-  console.log(formData);
+  const params = useParams();
 
+  useEffect(() => {
+    const fetchAccomodation = async () => {
+      const accomodationId = params.accomodationId;
+      console.log(accomodationId)
+      const res = await fetch(`/api/accomodation/get/${accomodationId}`);
+      const data = await res.json();
+      if (data.success === false) {
+        console.log(data.message);
+        return;
+      }
+      setFormData(data);
+    };
+
+    fetchAccomodation();
+  }, []);
 
 
   const handleImgSubmit=(e)=>{
@@ -145,7 +160,7 @@ function CreateAccomodation() {
         
       setLoading(true);
       setError(false);
-      const res = await fetch('/api/accomodation/create', {
+      const res = await fetch(`/api/accomodation/update/${params.accomodationId}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -171,7 +186,7 @@ function CreateAccomodation() {
 
   return (
     <main className='p-3 max-w-4xl mx-auto'>
-      <h1 className='text-3xl font-semibold text-center my-7'>Create And Post Your Accomodation</h1>
+      <h1 className='text-3xl font-semibold text-center my-7'>Update Accomodation</h1>
       <form onSubmit={handleSubmit} className='flex flex-col md:flex-row gap-4'>
         <div className='flex flex-col gap-4 flex-1'>
           <input onChange={handleChange} type="text" name="name" placeholder='Name' className='border p-3 rounded-lg' value={formData.name} required/>
@@ -319,7 +334,7 @@ function CreateAccomodation() {
                 </div>
               ))
             }
-            <button disabled={loading || uploading} className='p-3 bg-dark-blue  text-white rounded-lg uppercase hover:opacity-95 disabled:opacity-80'>{loading? "Posting Accomodation..." : "Create Accomodation"}</button>
+            <button disabled={loading || uploading} className='p-3 bg-dark-blue  text-white rounded-lg uppercase hover:opacity-95 disabled:opacity-80'>{loading? "Updating Accomodation..." : "Update Accomodation"}</button>
             {
               error && <p className='text-red-500 text-sm'>{error}</p>
             }
@@ -332,4 +347,4 @@ function CreateAccomodation() {
   )
 }
 
-export default CreateAccomodation
+export default UpdateAccomodation

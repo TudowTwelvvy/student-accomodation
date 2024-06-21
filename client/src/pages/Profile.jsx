@@ -18,6 +18,8 @@ import {
 import { useDispatch } from 'react-redux';
 import { app } from '../firebase';
 import { Link } from 'react-router-dom';
+import { MdDelete,MdEdit } from "react-icons/md";
+
 
 function Profile() {
   const { currentUser, loading, error } = useSelector((state)=>state.user);
@@ -211,13 +213,13 @@ function Profile() {
           {userAccomodations.map((accomodation) => (
             <div
               key={accomodation._id}
-              className='border rounded-lg p-3 flex justify-between items-center gap-4'
+              className='border rounded-lg px-3 flex justify-between items-center gap-4'
             >
               <Link to={`/accomodation/${accomodation._id}`}>
                 <img
                   src={accomodation.imageUrls[0]}
                   alt='accomodation cover'
-                  className='h-16 w-16 object-contain'
+                  className='h-[150px] w-[150px] object-contain'
                 />
               </Link>
               <Link
@@ -227,15 +229,17 @@ function Profile() {
                 <p>{accomodation.name}</p>
               </Link>
 
-              <div className='flex flex-col item-center'>
+              <div className='flex gap-3 item-center'>
                 <button
                   onClick={() => handleAccomDelete(accomodation._id)}
                   className='text-red-700 uppercase'
                 >
-                  Delete
+                  <MdDelete className='text-xl hover:text-2xl'/>
                 </button>
                 <Link to={`/update-accomodation/${accomodation._id}`}>
-                  <button className='text-green-700 uppercase'>Edit</button>
+                  <button className='text-green-700 uppercase'>
+                  <MdEdit className='text-xl hover:text-2xl'/>
+                  </button>
                 </Link>
               </div>
             </div>
