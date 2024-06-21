@@ -34,7 +34,9 @@ function CreateAccomodation() {
     cashPaying:false,
     imageUrls:[],
     spaceLeftMales:0,
-    spaceLeftFemales:0
+    spaceLeftFemales:0,
+    university: '',
+    city:''
   });
   const [imageUploadError, setImageUploadError] = useState(false);
   const [uploading, setUploading] = useState(false);
@@ -178,6 +180,10 @@ function CreateAccomodation() {
 
           <textarea onChange={handleChange} name="description" placeholder='Description' className='border p-3 rounded-lg' value={formData.description} required/>
 
+          <input  onChange={handleChange}type="text" name="university" placeholder='University' className='border p-3 rounded-lg' value={formData.university} required/>
+
+          <input  onChange={handleChange}type="text" name="city" placeholder='City' className='border p-3 rounded-lg' value={formData.city} required/>
+
           <input  onChange={handleChange}type="text" name="address" placeholder='Address' className='border p-3 rounded-lg' value={formData.address} required/>
 
           <div className='flex gap-3 flex-wrap'>
@@ -198,7 +204,7 @@ function CreateAccomodation() {
               <span>females</span>
             </div>
             <div className='flex gap-2'>
-              <input onChange={handleChange} type="checkbox" name="funished" className='w-5'  checked={formData.furnished}/>
+              <input onChange={handleChange} type="checkbox" name="furnished" className='w-5'  checked={formData.furnished}/>
               <span>Furnished</span>
             </div>
             <div className='flex gap-2'>

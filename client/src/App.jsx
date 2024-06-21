@@ -9,6 +9,7 @@ import Header from './components/Header';
 import PrivateRoute from './components/PrivateRoute';
 import CreateAccomodation from './pages/CreateAccomodation';
 import UpdateAccomodation from './pages/UpdateAccomodation';
+import Accomodation from './pages/Accomodation';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/sign-in" element={<SignIn/>}/>
         <Route path="/sign-up" element={<SignUp/>}/>
         <Route path="/about" element={<About/>}/>
+        <Route path="/accomodation/:accomodationId" element={<Accomodation/>}/>
         <Route element={<PrivateRoute/>}>
           <Route path="/profile" element={<Profile/>}/>
           <Route path="/create-accomodation" element={<CreateAccomodation/>}/>
