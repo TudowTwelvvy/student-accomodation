@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
 import {
   FaBed,
-  FaMapMarkedAlt,
+  FaChair,
   FaMapMarkerAlt,
   FaUniversity,
   FaMale,
   FaFemale 
 } from 'react-icons/fa';
+import { FaPersonSwimming } from "react-icons/fa6";
 import { BiMaleFemale } from "react-icons/bi";
 import { useParams } from 'react-router-dom';
 import { Slide } from 'react-slideshow-image';
@@ -130,8 +131,8 @@ function Accomodation() {
                 </div>
 
                 <div>
-                  <p>Swimming-pool: {accomodation.swimmingpool? 'Avaliable' : 'No Available'}</p>
-                  <p>Furnished: {accomodation.furnished? 'Yes' : 'Not furnished'}</p>
+                  <p><FaPersonSwimming className=' text-lg '/> {accomodation.swimmingpool? 'Avaliable' : 'No Available'}</p>
+                  <p><FaChair className=' text-lg '/> {accomodation.furnished? 'Furnished' : 'Not furnished'}</p>
                 </div>
 
                 <div >
