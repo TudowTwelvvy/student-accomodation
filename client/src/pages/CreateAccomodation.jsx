@@ -42,7 +42,7 @@ function CreateAccomodation() {
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
-  console.log(formData);
+  console.log(formData, 'form data');
 
 
 

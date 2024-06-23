@@ -39,7 +39,7 @@ const accomoSchema = new mongoose.Schema(
       type: Boolean,
      
     },
-    sharings: {
+    sharing: {
       type: Boolean,
     
     },

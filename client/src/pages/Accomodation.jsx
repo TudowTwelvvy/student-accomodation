@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
 import {
-  FaBath,
   FaBed,
-  FaChair,
   FaMapMarkedAlt,
   FaMapMarkerAlt,
-  FaParking,
-  FaShare,
+  FaUniversity,
+  FaMale,
+  FaFemale 
 } from 'react-icons/fa';
+import { BiMaleFemale } from "react-icons/bi";
 import { useParams } from 'react-router-dom';
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css'
@@ -46,6 +46,7 @@ function Accomodation() {
     };
     fetchAccomodation();
   }, [params.accomodationId]);
+  console.log(accomodation)
 
   return (
     <main>
@@ -57,18 +58,114 @@ function Accomodation() {
 
       {
         accomodation && !loading && !error && (
-          <Slide>
-            {
-              accomodation.imageUrls.map((url)=>(
-                <div className="flex items-center justify-center bg-cover h-[350px] ">
-                  <div >
-                    <img src={url} alt="imageSlider" className='w-full '/>
+          <div className='flex flex-col '>
+             <Slide>
+               {
+                 accomodation.imageUrls.map((url)=>(
+                   <div key={url} className="flex items-center justify-center bg-cover h-[350px] w-full">
+                      <div className='w-full'>
+                         <img src={url} alt="imageSlider" className='w-full' />
+                      </div>
+                   </div>
+                 ))
+              }
+             </Slide>
+
+             <div className='mx-1 p-2'>
+                <div className=' flex justify-between '>
+                  <div>
+                  <p className='text-2xl font-semibold text-dark-blue'>
+                  {accomodation.name} 
+                  </p>
+                
+
+                  <div className='flex flex-col'>
+                    <h2 className='flex items-center gap-1 '><FaUniversity className='text-lg text-dark-blue'/> {accomodation.university}, {accomodation.city}</h2>
+
+                    <span className='flex items-center gap-1 text-sm'>
+                     <FaMapMarkerAlt className='text-green-700 text-lg' />
+                     {accomodation.address}
+                    </span>
+                  
+                  </div>
+                  </div>
+                  
+                <div className='bg-dark-blue text-white w-[100px] p-2 rounded-lg'>
+                    <h2 className='text-center'>Space left:</h2>
+                    <div className='flex gap-4'>
+                      {accomodation.spaceLeftFemales> 0 ?<p className='flex items-center '><FaFemale className=' text-lg'/> {accomodation.spaceLeftFemales}</p>:''}
+                      {accomodation.spaceLeftMales> 0 ?<p className='flex items-center '><FaMale className=' text-lg'/> {accomodation.spaceLeftMales}</p>:''}
+                    </div>
+                    
+                  </div>
                 </div>
-            </div>
-              ))
-            }
-            
-          </Slide>
+                
+                <p className='border border-dark-blue mt-2 rounded-lg px-2'><span className=' font-medium '>{accomodation.description}</span></p>
+
+                <div className=''>
+
+                  <div className='flex justify-between mt-2'>
+                  <div className=''>
+                  <p className='flex items-center gap-1 font-normal'>Gender:  {
+                    accomodation.male && !accomodation.female? <FaMale className='text-dark-blue text-lg'/> : accomodation.female && accomodation.male? <BiMaleFemale className='text-dark-blue text-lg'/>: <FaFemale className='text-dark-blue text-lg'/>
+                    
+                    }</p>
+                    
+                </div>
+
+                
+
+                
+                  </div>
+
+
+                <div className='flex flex-col justify-between md:flex-row  p-2 gap-2 mt-2 rounded-lg bg-dark-blue text-white'>
+                <div className=''>
+                  <h2 className='flex items-center gap-1 font-medium'><FaBed className=' text-lg '/> Number of rooms:</h2>
+                  {accomodation.sharing ? <p >sharing: <span>{accomodation.sharingRoomsNo}</span></p>:''}
+                  {accomodation.singles? <p>single : <span>{accomodation.singleRoomsNo}</span></p>:''}
+
+                  
+                  
+                </div>
+
+                <div>
+                  <p>Swimming-pool: {accomodation.swimmingpool? 'Avaliable' : 'No Available'}</p>
+                  <p>Furnished: {accomodation.furnished? 'Yes' : 'Not furnished'}</p>
+                </div>
+
+                <div >
+                    <p className='font-medium'>This accomodation is avaliable for:</p>
+                    <ul className="pl-5 list-disc list-inside">
+                        {
+                          accomodation.nsfas? (<li>NSFAS</li> ): ""
+                        }
+                        {
+                          accomodation.otherBursary? (<li>Bursaries</li>) : ""
+                        }
+                        {
+                          accomodation.cashPaying? (<li>Cash Paying</li>) : ""
+                        }
+                    </ul>
+                </div>
+                </div>
+                
+  
+                </div>
+                <div className='mt-2'>
+                  
+                  <div className='flex gap-2'>
+                     {accomodation.sharing?<p className='bg-green-900 w-full max-w-[200px] text-white text-center p-2 rounded-md'>Sharing: R {accomodation.sharingPrice}  <span className='text-sm'>/year</span></p>:''}
+
+                     {accomodation.singles?<p className='bg-green-900 w-full max-w-[200px] text-white text-center p-2 rounded-md'>Single: R {accomodation.singlesPrice}<span className='text-sm'> /year</span></p>:''}
+                  </div>
+                </div>
+                
+              </div>
+          </div>
+          
+
+          
         )
       }
       
