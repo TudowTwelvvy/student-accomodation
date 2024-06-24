@@ -13,13 +13,13 @@ import { BiMaleFemale } from "react-icons/bi";
 import { useParams } from 'react-router-dom';
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css'
+import Contact from '../components/Contact';
 
 function Accomodation() {
  
   const [accomodation, setAccomodation] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  const [copied, setCopied] = useState(false);
   const [contact, setContact] = useState(false);
   const params = useParams();
   const { currentUser } = useSelector((state) => state.user);
@@ -101,13 +101,13 @@ function Accomodation() {
                   </div>
                 </div>
                 
-                <p className='border border-dark-blue mt-2 rounded-lg px-2'><span className=' font-medium '>{accomodation.description}</span></p>
+                <p className='border-2 mt-2 rounded-lg px-2'><span className=' font-medium '>{accomodation.description}</span></p>
 
                 <div className=''>
 
                   <div className='flex justify-between mt-2'>
                   <div className=''>
-                  <p className='flex items-center gap-1 font-normal'>Gender:  {
+                  <p className='flex items-center gap-1 font-medium'>Gender:  {
                     accomodation.male && !accomodation.female? <FaMale className='text-dark-blue text-lg'/> : accomodation.female && accomodation.male? <BiMaleFemale className='text-dark-blue text-lg'/>: <FaFemale className='text-dark-blue text-lg'/>
                     
                     }</p>
@@ -120,7 +120,7 @@ function Accomodation() {
                   </div>
 
 
-                <div className='flex flex-col justify-between md:flex-row  p-2 gap-2 mt-2 rounded-lg bg-dark-blue text-white'>
+                <div className='flex flex-col justify-between md:flex-row  p-2 gap-2 mt-2 rounded-lg bg-pri-blue text-white'>
                 <div className=''>
                   <h2 className='flex items-center gap-1 font-medium'><FaBed className=' text-lg '/> Number of rooms:</h2>
                   {accomodation.sharing ? <p >sharing: <span>{accomodation.sharingRoomsNo}</span></p>:''}
@@ -131,8 +131,8 @@ function Accomodation() {
                 </div>
 
                 <div>
-                  <p><FaPersonSwimming className=' text-lg '/> {accomodation.swimmingpool? 'Avaliable' : 'No Available'}</p>
-                  <p><FaChair className=' text-lg '/> {accomodation.furnished? 'Furnished' : 'Not furnished'}</p>
+                  <p className='flex items-center gap-1'><FaPersonSwimming className=' text-lg '/> {accomodation.swimmingpool? 'Avaliable' : 'No Available'}</p>
+                  <p className='flex items-center gap-1'><FaChair className=' text-lg '/> {accomodation.furnished? 'Furnished' : 'Not furnished'}</p>
                 </div>
 
                 <div >
@@ -153,15 +153,23 @@ function Accomodation() {
                 
   
                 </div>
-                <div className='mt-2'>
+                <div className='mt-2 flex justify-center'>
                   
-                  <div className='flex gap-2'>
-                     {accomodation.sharing?<p className='bg-green-900 w-full max-w-[200px] text-white text-center p-2 rounded-md'>Sharing: R {accomodation.sharingPrice}  <span className='text-sm'>/year</span></p>:''}
+                  <div className='flex gap-4'>
+                     {accomodation.sharing?<p className='bg-green-900  w-[200px] text-white text-center p-2 rounded-md flex flex-col'>Sharing: R {accomodation.sharingPrice}<span className='text-sm'>/year</span></p>:''}
 
-                     {accomodation.singles?<p className='bg-green-900 w-full max-w-[200px] text-white text-center p-2 rounded-md'>Single: R {accomodation.singlesPrice}<span className='text-sm'> /year</span></p>:''}
+                     {accomodation.singles?<p className='bg-green-900   text-white w-[200px] text-center p-2 rounded-md flex flex-col'>Single: R {accomodation.singlesPrice}<span className='text-sm'> /year</span></p>:''}
                   </div>
                 </div>
-                
+                {
+                  currentUser && accomodation.userRef !== currentUser._id && !contact && (
+                    <button onClick={() => setContact(true)} className='bg-dark-blue text-white rounded-lg uppercase hover:opacity-95 p-3 w-full mt-2'>
+                  Contact landlord
+                   </button>
+                  )
+                }
+                {contact && <Contact accomodation={accomodation}/>}
+                 
               </div>
           </div>
           
