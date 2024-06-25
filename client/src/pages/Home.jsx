@@ -57,11 +57,11 @@ export default function Home() {
   }, []);
 //className='flex flex-1 flex-col gap-6 p-28 px-3 max-w-6xl mx-auto'
   return (
-    <div >
+    <div className='relative'>
       {/* top */}
-      <div className='flex flex-col'>
+      <div className='flex flex-col '>
         <div className='flex items-center h-full '>
-        <div className='flex flex-col gap-6 p-28 px-3 max-w-6xl mx-auto'>
+        <div className='flex flex-col gap-6 p-2 md:p-20 px-3 mt-6 max-w-6xl mx-auto'>
           <h1 className='text-dark-blue font-bold text-3xl lg:text-6xl'>
           Find your next <span className='text-pri-blue'>perfect</span>
             <br />
@@ -150,8 +150,6 @@ export default function Home() {
           </div>
         )}
       </div>
-
-      <p className='bg-dark-blue text-white text-center mb-0'>coded by Tumelo (TwelvvyTudow)</p>
     </div>
   );
 }
