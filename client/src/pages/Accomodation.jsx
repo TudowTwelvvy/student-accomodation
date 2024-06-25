@@ -101,7 +101,7 @@ function Accomodation() {
                   </div>
                 </div>
                 
-                <p className='border-2 mt-2 rounded-lg px-2'><span className=' font-medium '>{accomodation.description}</span></p>
+                <p className='border-y mt-4 p-2 rounded-lg px-2'><span className=' font-medium '>{accomodation.description}</span></p>
 
                 <div className=''>
 
@@ -120,9 +120,9 @@ function Accomodation() {
                   </div>
 
 
-                <div className='flex flex-col justify-between md:flex-row  p-2 gap-2 mt-2 rounded-lg bg-pri-blue text-white'>
+                <div className='flex flex-col justify-between md:flex-row  p-2 gap-2 mt-2 rounded-lg bg-pri-blu text-whit mb-4'>
                 <div className=''>
-                  <h2 className='flex items-center gap-1 font-medium'><FaBed className=' text-lg '/> Number of rooms:</h2>
+                  <h2 className='flex items-center gap-1 font-medium'><FaBed className='text-lg text-dark-blue'/> Number of rooms:</h2>
                   {accomodation.sharing ? <p >sharing: <span>{accomodation.sharingRoomsNo}</span></p>:''}
                   {accomodation.singles? <p>single : <span>{accomodation.singleRoomsNo}</span></p>:''}
 
@@ -131,8 +131,8 @@ function Accomodation() {
                 </div>
 
                 <div>
-                  <p className='flex items-center gap-1'><FaPersonSwimming className=' text-lg '/> {accomodation.swimmingpool? 'Avaliable' : 'No Available'}</p>
-                  <p className='flex items-center gap-1'><FaChair className=' text-lg '/> {accomodation.furnished? 'Furnished' : 'Not furnished'}</p>
+                  <p className='flex items-center gap-1 font-medium'><FaPersonSwimming className='text-lg text-dark-blue '/> {accomodation.swimmingpool? 'Avaliable' : 'No Available'}</p>
+                  <p className='flex items-center gap-1 font-medium'><FaChair className='text-lg text-dark-blue'/> {accomodation.furnished? 'Furnished' : 'Not furnished'}</p>
                 </div>
 
                 <div >
