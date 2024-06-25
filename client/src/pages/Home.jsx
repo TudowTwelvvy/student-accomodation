@@ -61,7 +61,7 @@ export default function Home() {
       {/* top */}
       <div className='flex flex-col '>
         <div className='flex items-center h-full '>
-        <div className='flex flex-col gap-6 p-2 md:p-26 px-3 mt-6 max-w-6xl mx-auto'>
+        <div className='flex flex-col gap-6 p-2 md:p-28 px-3 mt-6 max-w-6xl mx-auto'>
           <h1 className='text-dark-blue font-bold text-3xl lg:text-6xl'>
           Find your next <span className='text-pri-blue'>perfect</span>
             <br />
@@ -82,7 +82,7 @@ export default function Home() {
         </div>
 
          <div className=''>
-          <img src={studentsLogo} alt="students" className='rounded-lg '/>
+          <img src={studentsLogo} alt="students" className='rounded-lg'/>
          </div>
 
         </div>
