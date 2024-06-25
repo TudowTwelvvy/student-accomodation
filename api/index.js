@@ -8,6 +8,8 @@ import cookieParser from 'cookie-parser';
 import path from 'path';
 dotenv.config()
 
+const port = process.env.PORT || 4000;
+
 
 mongoose.connect(process.env.MONGO).then(()=>{
   console.log("Connected to MongoDB...")
@@ -21,8 +23,8 @@ const app= express();
 app.use(express.json());
 app.use(cookieParser());
 
-app.listen(4000, ()=>{
-  console.log('Sever is running on port 4000')
+app.listen(port, ()=>{
+  console.log(`Sever is running on port ${port}`)
 })
 
 app.use('/api/user', userRouter)
