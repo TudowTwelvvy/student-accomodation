@@ -66,15 +66,6 @@ export const getAccomodations = async (req, res, next) => {
     const limit = parseInt(req.query.limit) || 9;
     const startIndex = parseInt(req.query.startIndex) || 0;
     
-    let university = req.query.university;
-    if (university === undefined || university === 'false') {
-      university = { $in: [false, true] };
-    }
-
-    let city = req.query.city;
-    if (city === undefined || city === 'false') {
-      city = { $in: [false, true] };
-    }
 
     let nsfas = req.query.nsfas;
     if (nsfas === undefined || nsfas === 'false') {
@@ -127,10 +118,8 @@ export const getAccomodations = async (req, res, next) => {
 
     const order = req.query.order || 'desc';
 
-    const accomodation = await Accomodation.find({
+    const accomodations = await Accomodation.find({
       name: { $regex: searchTerm, $options: 'i' },
-      university,
-      city,
       nsfas,
       cashPaying,
       otherBursary,
@@ -143,7 +132,7 @@ export const getAccomodations = async (req, res, next) => {
       .limit(limit)
       .skip(startIndex);
 
-    return res.status(200).json(accomodation);
+    return res.status(200).json(accomodations);
   } catch (error) {
     next(error);
   }

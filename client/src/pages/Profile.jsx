@@ -226,7 +226,7 @@ function Profile() {
                 className='text-slate-700 font-semibold  hover:underline truncate flex-1'
                 to={`/accomodation/${accomodation._id}`}
               >
-                <p>{accomodation.name}</p>
+                <p className='truncate'>{accomodation.name}</p>
               </Link>
 
               <div className='flex gap-3 item-center'>

@@ -10,6 +10,7 @@ import PrivateRoute from './components/PrivateRoute';
 import CreateAccomodation from './pages/CreateAccomodation';
 import UpdateAccomodation from './pages/UpdateAccomodation';
 import Accomodation from './pages/Accomodation';
+import Search from './pages/Search';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/sign-in" element={<SignIn/>}/>
         <Route path="/sign-up" element={<SignUp/>}/>
         <Route path="/about" element={<About/>}/>
+        <Route path="/search" element={<Search/>}/>
         <Route path="/accomodation/:accomodationId" element={<Accomodation/>}/>
         <Route element={<PrivateRoute/>}>
           <Route path="/profile" element={<Profile/>}/>
