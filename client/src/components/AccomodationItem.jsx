@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { MdLocationOn } from 'react-icons/md';
 import { FaPersonSwimming } from "react-icons/fa6";
-import {FaChair} from 'react-icons/fa';
+import {FaChair, FaUniversity,} from 'react-icons/fa';
 
 export default function AccomodationItem({ accomodation }) {
   return (
@@ -19,6 +19,12 @@ export default function AccomodationItem({ accomodation }) {
           <p className='truncate text-lg font-semibold text-slate-700'>
             {accomodation.name}
           </p>
+          <div className='flex items-center gap-1'>
+            <FaUniversity className='h-4 w-4 text-dark-blue' />
+            <p className='text-sm text-gray-600 truncate w-full'>
+              {accomodation.university}
+            </p>
+          </div>
           <div className='flex items-center gap-1'>
             <MdLocationOn className='h-4 w-4 text-green-700' />
             <p className='text-sm text-gray-600 truncate w-full'>

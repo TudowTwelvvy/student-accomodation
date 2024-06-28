@@ -91,15 +91,17 @@ function Accomodation() {
                   </div>
                   </div>
                   
-                <div className='bg-dark-blue text-white w-[100px] p-2 rounded-lg'>
+                
+                  {accomodation.spaceLeftFemales || accomodation.spaceLeftMales ?
+                  ( <div className='bg-dark-blue text-white w-[100px] p-2 rounded-lg'>
                     <h2 className='text-center'>Space left:</h2>
                     <div className='flex gap-4'>
                       {accomodation.spaceLeftFemales> 0 ?<p className='flex items-center '><FaFemale className=' text-lg'/> {accomodation.spaceLeftFemales}</p>:''}
                       {accomodation.spaceLeftMales> 0 ?<p className='flex items-center '><FaMale className=' text-lg'/> {accomodation.spaceLeftMales}</p>:''}
                     </div>
-                    
-                  </div>
+                  </div> ):""}
                 </div>
+                
                 
                 <p className='border-y mt-4 p-2 rounded-lg px-2'><span className=' font-medium '>{accomodation.description}</span></p>
 
@@ -124,20 +126,19 @@ function Accomodation() {
                 <div className=''>
                   <h2 className='flex items-center gap-1 font-medium'><FaBed className='text-lg text-dark-blue'/> Number of rooms:</h2>
                   {accomodation.sharing ? <p >sharing: <span>{accomodation.sharingRoomsNo}</span></p>:''}
-                  {accomodation.singles? <p>single : <span>{accomodation.singleRoomsNo}</span></p>:''}
-
-                  
-                  
+                  {accomodation.singles? <p>single : <span>{accomodation.singleRoomsNo}</span></p>:''} 
                 </div>
 
                 <div>
-                  <p className='flex items-center gap-1 font-medium'><FaPersonSwimming className='text-lg text-dark-blue '/> {accomodation.swimmingpool? 'Avaliable' : 'No Available'}</p>
+                  <p className='flex items-center gap-1 font-medium'><FaPersonSwimming className='text-lg text-dark-blue '/> {accomodation.swimmingpool? 'Avaliable' : 'Not Available'}</p>
                   <p className='flex items-center gap-1 font-medium'><FaChair className='text-lg text-dark-blue'/> {accomodation.furnished? 'Furnished' : 'Not furnished'}</p>
                 </div>
 
                 <div >
-                    <p className='font-medium'>This accomodation is avaliable for:</p>
-                    <ul className="pl-5 list-disc list-inside">
+                    {accomodation.nsfas || accomodation.otherBursary || accomodation.cashPaying? (
+                      <div>
+                        <p className='font-medium'>This accomodation is avaliable for:</p>
+                        <ul className="pl-5 list-disc list-inside">
                         {
                           accomodation.nsfas? (<li>NSFAS</li> ): ""
                         }
@@ -147,7 +148,9 @@ function Accomodation() {
                         {
                           accomodation.cashPaying? (<li>Cash Paying</li>) : ""
                         }
-                    </ul>
+                         </ul>
+                      </div>
+                    ) :""}
                 </div>
                 </div>
                 

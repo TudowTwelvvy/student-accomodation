@@ -66,7 +66,7 @@ function Header() {
         </ul>
       </div>
       <div className='flex justify-center'>
-      <div className='inline md:hidden '>
+      <div className='inline md:hidden mb-3'>
           <form onSubmit={handleSubmit} className='flex items-center justify-center rounded-lg border-[2px] border-dark-blue h-7 ml-4 md:h-10 bg-dark-blue '>
             <input value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} type="text" placeholder='Search...' className='outline-none w-[200px]  h-full rounded-l-lg p-2' />
             <button className='flex items-center p-2 h-full rounded-r-lg cursor-pointer'>
