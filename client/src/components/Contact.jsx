@@ -21,6 +21,7 @@ export default function Contact({ accomodation }) {
     };
     fetchLandlord();
   }, [accomodation.userRef]);
+  console.log("landload, landlord")
   return (
     <>
       {landlord && (

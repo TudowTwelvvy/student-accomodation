@@ -26,7 +26,6 @@ function UpdateAccomodation() {
     singlesPrice:0,
     sharingPrice:0,
     singles: false,
-    sharing:false,
     furnished: false,
     sharing:false,
     swimmingpool:false,
