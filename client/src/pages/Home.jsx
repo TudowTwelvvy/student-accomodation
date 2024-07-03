@@ -10,6 +10,7 @@ import nsfasLogo from '../assets/NSFAS-Status-Check-2024-Using-ID-Number.jpg'
 import studentsLogo from '../assets/istock-652270816.jpg'
 import vendaLogo from '../assets/venda.png'
 import nwuLogo from '../assets/nwu logo.png'
+import Footer from '../components/Footer';
 
 const logosData= [ujLogo,nwuLogo,cptLogo,nsfasLogo,vendaLogo,nwuLogo]
 
@@ -150,6 +151,7 @@ export default function Home() {
           </div>
         )}
       </div>
+      <Footer/>
     </div>
   );
 }

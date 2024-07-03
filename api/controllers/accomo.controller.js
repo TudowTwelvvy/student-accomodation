@@ -53,7 +53,7 @@ export const getAccomodation = async (req, res, next) => {
   try {
     const accomodation = await Accomodation.findById(req.params.id);
     if (!accomodation) {
-      return next(errorHandler(404, 'Listing not found!'));
+      return next(errorHandler(404, 'Accomodation listing not found!'));
     }
     res.status(200).json(accomodation);
   } catch (error) {

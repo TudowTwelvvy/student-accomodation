@@ -14,7 +14,7 @@ import Search from './pages/Search';
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter>    
       <Header/>
       <Routes>
         <Route path="/" element={<Home/>}/>
@@ -28,10 +28,7 @@ function App() {
           <Route path="/create-accomodation" element={<CreateAccomodation/>}/>
           <Route path="/update-accomodation/:accomodationId" element={<UpdateAccomodation/>}/>
         </Route>
-        
-        
       </Routes>
-      
     </BrowserRouter>
   )
 }
