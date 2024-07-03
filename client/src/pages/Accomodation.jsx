@@ -93,7 +93,7 @@ function Accomodation() {
                   
                 
                   {accomodation.spaceLeftFemales || accomodation.spaceLeftMales ?
-                  ( <div className='bg-dark-blue text-white w-[100px] p-2 rounded-lg'>
+                  ( <div className='bg-dark-blue text-white w-[100px] h-[100px] p-2 rounded-lg'>
                     <h2 className='text-center'>Space left:</h2>
                     <div className='flex gap-4'>
                       {accomodation.spaceLeftFemales> 0 ?<p className='flex items-center '><FaFemale className=' text-lg'/> {accomodation.spaceLeftFemales}</p>:''}
