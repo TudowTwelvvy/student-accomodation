@@ -59,7 +59,7 @@ export default function Home() {
   return (
     <div className="relative">
       {/* top */}
-      <div className="flex flex-col md:container ">
+      <div className="flex flex-col  ">
         <div className=" flex flex-col md:flex-row items-center lg:p-16 h-full lg:h-full w-full px-2">
           <div className="md:space-y-4 flex flex-col lg:flex-1 gap-6 px-3 md:p-16 mt-4 lg:mt-0 sm:mt-16 sm:mb-6 max-w-6xl mx-auto">
             <h1 className="text-dark-blue font-bold text-3xl lg:text-6xl">

@@ -91,7 +91,7 @@ function Accomodation() {
               </div>
 
               {accomodation.spaceLeftFemales || accomodation.spaceLeftMales ? (
-                <div className="bg-dark-blue text-white w-max h-[80px] p-2  rounded-lg">
+                <div className="bg-dark-blue text-white w-max h-[80px] p-2 flex flex-col rounded-lg">
                   <h2 className="text-center">Space left:</h2>
                   <div className="flex gap-4">
                     {accomodation.spaceLeftFemales > 0 ? (
@@ -151,7 +151,7 @@ function Accomodation() {
                     ''
                   )}
                   {accomodation.singles ? (
-                    <p className="font-medium">
+                    <p className="">
                       single : <span>{accomodation.singleRoomsNo}</span>
                     </p>
                   ) : (
