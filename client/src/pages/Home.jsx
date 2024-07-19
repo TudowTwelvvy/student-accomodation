@@ -90,7 +90,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="mt-8 md:mt-12">
+        <div className="mt-10 md:mt-12">
           <Slide>
             {logosData.map((logo, index) => (
               <div key={index} className="pt-3 w-full">
@@ -113,7 +113,7 @@ export default function Home() {
         {nsfasAccomos && nsfasAccomos.length > 0 && (
           <div className="">
             <div className="my-3">
-              <h2 className="text-2xl font-semibold text-dark-blue">
+              <h2 className="text-2xl lg:text-3xl font-semibold text-dark-blue">
                 Recent NSFAS accomodations
               </h2>
               <Link
@@ -136,7 +136,7 @@ export default function Home() {
         {cashPayingAccomos && cashPayingAccomos.length > 0 && (
           <div className="">
             <div className="my-3">
-              <h2 className="text-2xl font-semibold text-dark-blue">
+              <h2 className="text-2xl lg:text-3xl  font-semibold text-dark-blue">
                 Recent Cash Paying accomodations
               </h2>
               <Link
@@ -159,7 +159,7 @@ export default function Home() {
         {otherBursaryAccomos && otherBursaryAccomos.length > 0 && (
           <div className="">
             <div className="my-3">
-              <h2 className="text-2xl font-semibold text-dark-blue">
+              <h2 className="text-2xl lg:text-3xl  font-semibold text-dark-blue">
                 Recent Bursary accomodations
               </h2>
               <Link

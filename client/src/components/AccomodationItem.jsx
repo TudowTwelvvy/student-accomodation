@@ -51,7 +51,7 @@ export default function AccomodationItem({ accomodation }) {
             </p>
           </div>
 
-          <div className="flex mt-3 justify-center gap-2 items-center ring-1 ring-gray-400 rounded-md p-2">
+          <div className="flex mt-3 justify-center gap-2 items-center ring-1 ring-gray-400 w-max rounded-md px-4 py-2">
             {accomodation.furnished ? (
               <FaChair className=" text-green-700" />
             ) : (

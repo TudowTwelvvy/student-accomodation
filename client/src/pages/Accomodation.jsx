@@ -72,7 +72,7 @@ function Accomodation() {
 
           <div className="mx-1 p-2">
             <div className=" flex justify-between tran">
-              <div>
+              <div className="space-y-3">
                 <p className="text-2xl font-semibold text-dark-blue">
                   {accomodation.name}
                 </p>
@@ -91,7 +91,7 @@ function Accomodation() {
               </div>
 
               {accomodation.spaceLeftFemales || accomodation.spaceLeftMales ? (
-                <div className="bg-dark-blue text-white w-max h-[90px] p-2 rounded-lg">
+                <div className="bg-dark-blue text-white w-max h-[80px] p-2  rounded-lg">
                   <h2 className="text-center">Space left:</h2>
                   <div className="flex gap-4">
                     {accomodation.spaceLeftFemales > 0 ? (
@@ -117,11 +117,11 @@ function Accomodation() {
               )}
             </div>
 
-            <p className="border-y mt-4 p-2 rounded-lg px-2 text-gray-500 font-medium tracking-wide">
+            <p className="border-y mt-4 p-2 rounded-lg px-2 text-gray-600 font-medium tracking-wide">
               {accomodation.description}
             </p>
 
-            <div className="">
+            <div className="mt-4">
               <div className="flex justify-between mt-2">
                 <div className="">
                   <p className="flex items-center gap-1 font-medium">
@@ -139,12 +139,12 @@ function Accomodation() {
 
               <div className="flex flex-col justify-between md:flex-row  p-2 gap-2 mt-2 rounded-lg bg-pri-blu text-whit mb-4 space-y-3">
                 <div className="">
-                  <h2 className="flex items-center gap-1 font-bold">
+                  <h2 className="flex items-center gap-1 font-medium">
                     <FaBed className="text-lg text-dark-blue" /> Number of
                     rooms:
                   </h2>
                   {accomodation.sharing ? (
-                    <p className="font-medium">
+                    <p className="">
                       sharing: <span>{accomodation.sharingRoomsNo}</span>
                     </p>
                   ) : (
@@ -190,7 +190,7 @@ function Accomodation() {
                 </div>
               </div>
             </div>
-            <div className="mt-2 flex justify-center pl-2 pr-2">
+            <div className="mt-2 flex justify-center pl-2 pr-2 w-full">
               <div className="flex gap-4">
                 {accomodation.sharing ? (
                   <p className="bg-green-900  w-[200px] text-white text-center p-2 rounded-md flex flex-col">
