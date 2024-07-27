@@ -3,12 +3,10 @@ This project is a full-stack web application designed to manage student accommod
 
 *FEATURES*
 
-•User Authentication: Secure login and registration using JWT and Google Auth.
-Accommodation Listings: Students can browse and filter available accommodations.
-
-•Contacting System: Students can book accommodations by sending the landlord message.
-
-•Landloard:  can add, edit, and delete accommodation listings.
+•User Authentication: Secure login and registration using JWT and Google Auth.<br/>
+•Accommodation Listings: Students can search and filter available accommodations.<br/>
+•Contacting System: Students can book accommodations by sending the landlord message.<br/>
+•Landloard:  can create, post, update and delete accommodation listings.<br/>
 Responsive Design: Mobile-first design using Tailwind CSS.
 
 
