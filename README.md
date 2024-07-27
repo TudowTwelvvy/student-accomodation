@@ -16,14 +16,14 @@ Responsive Design: Mobile-first design using Tailwind CSS.
 
 •Frontend:
 React.js: JavaScript library for building user interfaces.<br/>
-Redux: State management library.
+Redux: State management library.<br/>
 Tailwind CSS: Utility-first CSS framework for styling.
 
 •Backend:
-Node.js: JavaScript runtime for the backend.
-Express: Web application framework for Node.js.
+Node.js: JavaScript runtime for the backend.<br/>
+Express: Web application framework for Node.js.<br/>
 MongoDB: NoSQL database for storing data.
 
 •Authentication:
-JWT (JSON Web Tokens): For secure user authentication.
+JWT (JSON Web Tokens): For secure user authentication.<br/>
 Google Auth: For third-party authentication using Google accounts.
