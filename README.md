@@ -14,16 +14,16 @@ Responsive Design: Mobile-first design using Tailwind CSS.
 
 *TECHNOLOGIES USED*
 
-•Frontend:
+•Frontend:<br/>
 React.js: JavaScript library for building user interfaces.<br/>
 Redux: State management library.<br/>
 Tailwind CSS: Utility-first CSS framework for styling.
 
-•Backend:
+•Backend:<br/>
 Node.js: JavaScript runtime for the backend.<br/>
 Express: Web application framework for Node.js.<br/>
 MongoDB: NoSQL database for storing data.
 
-•Authentication:
+•Authentication:<br/>
 JWT (JSON Web Tokens): For secure user authentication.<br/>
 Google Auth: For third-party authentication using Google accounts.
